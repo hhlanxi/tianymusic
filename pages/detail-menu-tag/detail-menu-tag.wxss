@@ -1,0 +1,14 @@
+page{
+    padding: 0 20rpx;
+    box-sizing: border-box;
+}
+
+.song-menu-list{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+.song-menu-item{
+    width: 48%;
+    margin-top: 10rpx;
+}

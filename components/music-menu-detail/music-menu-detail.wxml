@@ -1,0 +1,14 @@
+<view class="music-container">
+    <view class="container-left">
+        {{index}}
+    </view>
+    <view class="container-right">
+        <view class="top">
+            {{itemData.name}}
+        </view>
+        <view class="bottom">
+            <image src="/assets/images/icons/sq_icon.png" mode="widthFix"/>
+            <text>{{itemData.ar[0].name}}</text>
+        </view>
+    </view>
+</view>

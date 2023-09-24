@@ -1,0 +1,19 @@
+Component({
+    properties:{
+        itemData:{
+            type:Object,
+            value:{}
+        },
+        itemKey:{
+            type:String,
+            value:""
+        }
+    },
+    methods:{
+        toRankDetail(){
+           wx.navigateTo({
+             url: `/pages/detail-music/detail-music?type=rank&key=${this.properties.itemKey}`,
+           })
+        }
+    }
+})

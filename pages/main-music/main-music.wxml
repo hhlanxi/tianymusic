@@ -1,0 +1,58 @@
+<van-search
+  value=""
+  shape="round"
+  background="#fafafa"
+  placeholder="请输入搜索关键词"
+  bind:click-input="onClickSearch"
+  readonly
+/>
+<view class="swiper"  wx:if="{{banners.length}}">
+    <swiper circular autoplay interval="2500" indicator-dots style="height: {{swiperitemImage}}px;" >
+        <block wx:for="{{banners}}">
+            <swiper-item class="item" >
+                <image bindload="onImageLoad" class="swiperimage" src="{{item.imageUrl}}" mode="widthFix"/>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+
+
+<view class="recommend" wx:if="{{recommendSongList.length}}">
+    <area-header title="推荐歌曲" bind:moreClick="onClickMore">
+        <block wx:for="{{recommendSongList}}" wx:key="id"> 
+            <music-menu-item itemData="{{item}}" bind:tap="ontaptoplay" data-id="{{item.id}}" mark:index="{{index}}"></music-menu-item>
+        </block>
+    </area-header>
+</view>
+
+<view class="hot" wx:if="{{hotSongList.length}}">
+    <area-header title="热门歌单" bind:moreClick="onClickMenuTag"></area-header>
+    <scroll-view scroll-x enable-flex class="scroll-x-hot" 	show-scrollbar="{{false}}" enhanced >
+    <view class="scroll-x-item">
+         <block wx:for="{{hotSongList}}">
+            <view class="song-sheet-item">
+                <song-sheet-item  itemData="{{item}}"></song-sheet-item>
+            </view>
+            </block> 
+    </view>      
+    </scroll-view>
+</view>
+
+<view class="recommendlist" wx:if="{{recommendSongMenu.length}}">
+    <area-header title="推荐歌单"  bind:moreClick="onClickMenuTag"></area-header>
+    <scroll-view scroll-x enable-flex class="scroll-x-hot" 	show-scrollbar="{{false}}" enhanced >
+    <view class="scroll-x-item">
+         <block wx:for="{{recommendSongMenu}}">
+                <song-sheet-item class="song-sheet-item" itemData="{{item}}"></song-sheet-item>
+            </block> 
+    </view>      
+    </scroll-view>
+</view>
+
+<view class="peck" wx:if="{{rankInfo.newRanking}}">
+    <area-header title="巅峰榜" hasShow="{{false}}">
+        <block wx:for="{{rankInfo}}" wx:key="id">
+            <rank-item itemData="{{item}}" itemKey="{{index}}"></rank-item>
+        </block>
+    </area-header>
+</view>

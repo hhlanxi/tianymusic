@@ -1,0 +1,39 @@
+<van-search
+  value="{{searchValue}}"
+  shape="round"
+  background="#fafafa"
+  placeholder="请输入搜索关键词"
+  bind:change="onSearchChange"
+  focus="true"
+/>
+<view class="hot-search">
+    <view class="search-record">热门搜索</view>
+    <block wx:for="{{HotSearchTap}}" wx:key="first">
+        <van-tag bind:tap="tapSearch" 
+        plain 
+        type="primary" 
+        class="hot-search-item"
+        mark:value="{{item.first}}"
+        >{{item.first}} </van-tag>
+    </block>
+</view>
+
+<view class="history-search">
+    <view class="search-record">
+        历史搜索
+    </view>
+    <block wx:for="{{SearchHistory}}" wx:key="first">
+        <van-tag bind:tap="tapSearch" 
+        plain 
+        type="primary" 
+        class="hot-search-item"
+        mark:value="{{item}}"
+        >{{item}} </van-tag>
+    </block>
+</view>
+
+<view class="search-result-container" wx:if="{{isSearch}}" style="height: {{availableHeight}}px;">
+    <block wx:for="{{searchMusicList}}" wx:key="id">
+        <search-music-item  itemData="{{item}}" bind:tap="ontaptoplay" mark:id="{{item.id}}" mark:index="{{index}}"></search-music-item>
+    </block>
+</view>

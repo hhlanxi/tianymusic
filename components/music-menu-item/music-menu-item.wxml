@@ -1,0 +1,13 @@
+<view class="music-item">
+            <view class="music-image">
+                <image lazy-load src="{{itemData.al.picUrl}}"
+                mode="widthFix"/>
+            </view>
+            <view class="music-content">
+                <view class="information">
+                    <text class="music-music-name">{{itemData.name}}</text>
+                    <text class="music-music-author">{{itemData.ar[0].name}}</text>
+                </view>
+                <van-icon name="arrow" />
+            </view>
+</view>

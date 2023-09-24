@@ -1,0 +1,32 @@
+page{
+    background-color: #fafafa;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    --search-padding:10px 0;
+}
+.hot-search-item{
+    margin: 10rpx 6rpx;
+    --tag-line-height:20px;
+}
+
+.search-result-container{
+    position: absolute;
+    top: 0;
+    margin-left: -20rpx;
+    margin-top: 54px;
+    z-index: 999;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20rpx 20rpx;
+    overflow:scroll;
+}
+.search-music-item{
+    margin: 10rpx 0;
+}
+.search-record{
+    font-size: 40rpx;
+    font-weight: 700;
+    margin: 10rpx 0;
+    border-bottom: 2rpx solid black;
+}

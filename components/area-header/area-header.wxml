@@ -1,0 +1,11 @@
+<view class="header">
+    <text class="title">{{title}}</text>
+    <view class="content" bind:tap="onclickmore" wx:if="{{hasShow}}">
+        <text class="more">更多</text>
+        <van-icon name="arrow" />
+    </view>
+</view>
+
+<view class="main-content">
+    <slot></slot>
+</view>

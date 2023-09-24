@@ -1,0 +1,30 @@
+<wxs src="/wxs/format.wxs" module="fmt"/>
+
+<video src="{{url}}" class="detail-video" autoplay="{{autoplay}}"></video>
+<view class="related">
+    <view class="info">
+    <view class="mvname">
+        <text>{{mvInfo.name}}</text>
+    </view>
+    <view class="mvauthor">
+        <text>{{mvInfo.artistName}} - </text>
+    </view>
+    <view class="mvcontent">
+     <text>{{fmt.formatHeat(mvInfo.playCount)}}次播放- {{mvInfo.publishTime}}</text>
+    </view>
+</view>
+
+<view class="recommend">
+    <text class="recommend-text">推荐视频</text>
+    <block wx:for="{{recommendList}}" wx:key="*this">
+        
+    </block>
+    <block  wx:if="{{recommendList.length === 0}}">
+        <text class="norecommend">暂无推荐哦~~~</text>
+       
+    </block>
+  
+   
+</view>
+</view>
+

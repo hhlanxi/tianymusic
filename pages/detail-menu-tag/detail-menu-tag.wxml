@@ -1,0 +1,15 @@
+<view class="menu-item">
+    <block wx:for="{{songMenu}}"> 
+        <area-header title="{{item.cat}}" hasShow="{{false}}">
+            <view class="song-menu-list">
+                <block wx:for="{{item.playlists}}" wx:for-item="play">
+                    <view class="song-menu-item">
+                        <song-sheet-item itemData="{{play}}"></song-sheet-item>
+                    </view>
+                   
+                </block>
+            </view>
+        </area-header>
+    </block>
+  
+</view>

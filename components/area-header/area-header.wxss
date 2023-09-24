@@ -1,0 +1,22 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20rpx 0;
+}
+.title{
+    font-size: 46rpx;
+    font-weight: bold;
+}
+.content{
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+    color: #888;
+}
+.content .more{
+    font-size: 26rpx;
+}
+.main-content{
+    margin-top: 20rpx 0;
+}

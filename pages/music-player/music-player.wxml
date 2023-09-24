@@ -1,0 +1,121 @@
+<nav-bar >
+    <text slot="left" bind:tap="goback" >返回</text>
+    <view slot="center">
+        <block wx:for="{{navTitleList}}" wx:key="*this">
+            <text class="song {{activeNumber === index ?'active':''}}" data-index="{{index}}" bind:tap="onNavTapActive">{{item}}</text>
+            <text class="center-line" wx:if="{{index !== navTitleList.length - 1}}">|</text>
+        </block>
+    </view>
+</nav-bar>
+
+
+<image  class="maskImage"  src="{{currentPlayInfo.al.picUrl}}" mode="aspectFill"/>
+<view class="maskBulr"></view>
+
+<swiper class="play-container" style="height:{{scrollHeight}}px" bindchange="swiperchange" current="{{activeNumber}}">
+    <swiper-item>
+        <view class="music-info-container">
+        <view class="album">
+            <image class="music-info-image" src="{{currentPlayInfo.al.picUrl}}" mode="widthFix"/>
+        </view> 
+            <view class="music-info-context">
+                <view class="music-info-name">
+                    <view class="name">
+                        {{currentPlayInfo.name}}
+                    </view>
+                    <view class="author">
+                        {{currentPlayInfo.ar[0].name}}
+                    </view>
+                    <view class="music-info-lyric">
+                        {{currentLyricText}}
+                    </view>
+                    <slider 
+                    class="slider"
+                     block-size="12" 
+                     value="{{sliderValue}}"
+                     bindchange="sliderChange"
+                     bindchanging="sliderChanging"
+                    />
+                    <view class="music-info-time">
+                        <view class="current-time">
+                            {{fmt.formatTime(currentTime)}}
+                        </view>
+                        <view class="end-time">
+                            {{fmt.formatTime(durationTime)}}
+                        </view>
+                    </view>
+                    <view class="play-key">
+                        <!-- 循环模式 -->
+                        <image class="play-item random" src="/assets/images/player/{{circulateImg}}.png" mode="" bind:tap="onTapCirculateImg"/>
+                        <!-- 上一首 -->
+                        <image 
+                        class="play-item prev" 
+                        src="/assets/images/player/play_prev.png" 
+                        mode=""
+                        bind:tap="determineSwitch"
+                        mark:type='prev'
+                        />
+                        <!-- 播放 -->
+                        <image class="play-item resume" src="/assets/images/player/play_{{isPlaying? 'pause':'resume'}}.png" mode="" bind:tap="bindPlayBack"/>
+                        <!-- 下一首 -->
+                        <image 
+                        class="play-item next" 
+                        src="/assets/images/player/play_next.png" 
+                        mode=""
+                        bind:tap="determineSwitch"
+                        mark:type='next'
+                        />
+                        <!-- 歌曲列表 -->
+                        <image class="play-item list" bind:tap="onTapPlayList" src="/assets/images/player/play_music.png" mode=""/>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </swiper-item>
+    <swiper-item>
+        <scroll-view 
+        class="lyric-container" 
+        scroll-y 
+        scroll-top="{{lyricScrollTop}}"
+        scroll-with-animation
+        >
+            <block wx:for="{{lyricInfos}}"  wx:key="time" >
+                <view 
+                class="item {{currentLyricIndex === index ? 'lyric-active':''}}" 
+                style="padding-top: {{index===0?(scrollHeight/2-66):0}}px;padding-bottom: {{index===lyricInfos.length-1?(scrollHeight/2+66):0}}px;"
+                bind:tap="onTapLyricToPalyTime"
+                mark:item="{{item}}"
+                >
+                   {{item.text}}
+                </view>
+            </block>
+        </scroll-view>
+    </swiper-item>
+</swiper>
+
+<wxs src="/wxs/format.wxs" module="fmt"/>
+
+
+<van-popup
+  show="{{popupShow}}"
+  position="bottom"
+  closeable
+  safe-area-inset-bottom
+  custom-style="max-height:50%;background-color:rgba(255,255,255,0.8);"
+  bind:close="onClosePopup"
+  overlay-style="background-color:rgba(0,0,0,0.6)"
+  close-icon="close"
+  duration="100"
+>
+<view class="popup-container">
+    <block wx:for="{{playList}}" wx:key="id">
+        <music-menu-detail 
+        itemData="{{item}}" 
+        index="{{index+1}}"
+        bind:tap="onSwitchMusic"
+        mark:index="{{index}}"
+        class="{{index === playListIndex ? 'playListActive':''}};"
+        ></music-menu-detail>
+    </block>
+</view>
+</van-popup>

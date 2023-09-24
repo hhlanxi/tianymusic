@@ -1,0 +1,26 @@
+page{
+    background-color: #fafafa;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    --search-padding:10px 0;
+}
+.swiper{
+    border-radius: 15rpx;
+    overflow: hidden;
+}
+.swiper .item .swiperimage{
+    width: 100%;
+}
+.scroll-x-hot{
+ width: 100vw;
+ margin-left: -20rpx;
+}
+.scroll-x-item{
+    display: flex;
+}
+
+.song-sheet-item{
+   flex: none;
+   width: 30%;
+    margin-right: 20rpx;
+}

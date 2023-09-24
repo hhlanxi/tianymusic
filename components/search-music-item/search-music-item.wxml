@@ -1,0 +1,19 @@
+
+<view class="search-music-container">
+    <view class="search-left">
+        <view class="left-top">
+            {{itemData.name}}
+        </view>
+        <view class="left-bottom">
+            <view class="image-container">
+                <image class="bottom-image" src="/assets/images/icons/sq_icon.png" mode="widthFix"/>
+            </view>
+            <text class="artists">{{itemData.artists[0].name}}</text>
+        </view>
+    </view>
+    <view class="search-right">
+        {{fmt.formatTime(itemData.duration)}}
+    </view>
+</view>
+
+<wxs src="/wxs/format.wxs" module="fmt"/>

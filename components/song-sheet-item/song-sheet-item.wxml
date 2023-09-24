@@ -1,0 +1,13 @@
+<view class="songView" bind:tap="tomenudetail">
+    <view class="top">
+        <image class="topImage" src="{{itemData.coverImgUrl}}" mode="widthFix"/>
+        <view class="topPlayCount">
+            <text>{{fmt.formatHeat(itemData.playCount)}}</text>
+        </view>
+    </view>
+    <view class="bottom">
+      <text class="songName">{{itemData.name}}</text>
+    </view>
+</view>
+
+<wxs src="/wxs/format.wxs" module="fmt"/>

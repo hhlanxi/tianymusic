@@ -1,0 +1,26 @@
+.search-music-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10rpx 10rpx;
+    border-radius: 10rpx;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 16rpx 0;
+}
+.search-left{
+    flex: 1;
+}
+.left-bottom{
+    display: flex;
+}
+.artists{
+    flex: 15;
+    line-height: 21px;
+    margin: 0 10rpx;
+}
+.image-container{
+    flex:1;
+}
+.bottom-image{
+    width: 100%;
+}

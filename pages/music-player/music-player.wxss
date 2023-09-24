@@ -1,0 +1,132 @@
+.maskImage,.maskBulr{
+    position:fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+.maskBulr{
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.song,.lyric{
+    color:rgba(255,255,255,0.3);
+}
+.center-line{
+    margin: 0 10rpx;
+    color: rgba(255, 255,255, 0.8)
+}
+.active{
+    color: white;
+}
+
+.music-info-container{
+    box-sizing: border-box;
+    padding: 60rpx 60rpx;
+    color: white;
+    font-size: 30rpx;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+.music-info-container .album{
+   
+    flex: 1;
+}
+
+.music-info-container .music-info-image{
+    width: 100%;
+    border-radius: 10rpx;
+    vertical-align: top;
+}
+.music-info-lyric{
+    text-align: center;
+    margin: 20rpx 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.music-info-context .slider{
+    margin: 0 18px;
+}
+.music-info-name .name{
+    font-size: 60rpx;
+    font-weight: 700;
+}
+.music-info-name .author{
+    font-size: 24rpx;
+    margin: 10rpx 0;
+}
+.music-info-time{
+    display: flex;
+    justify-content: space-between;
+ 
+}
+.play-key{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.play-item{
+    width: 70rpx;
+    height: 70rpx;
+}
+.play-key .random{
+    width: 100rpx;
+    height: 100rpx;
+}
+.play-key .resume{
+    width: 150rpx;
+    height: 150rpx;
+}
+.popup{
+    height: 100%;
+}
+.popup-container{
+    position: relative;
+    margin-top: 35px;
+    overflow-y: scroll;
+    height: 500rpx;
+    padding: 0 10rpx;
+}
+
+.lyric-container{
+    color: #bbb;
+    height: 100%;
+    font-size: 28rpx;
+    text-align: center;
+}
+
+.item{
+   line-height: 35px;
+   height: 35px;
+}
+.lyric-active{
+    color: white;
+    font-size: 42rpx;
+    text-shadow: 10rpx 5rpx 8px rgba(0, 0, 0,0.8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ 
+}
+.playListActive{
+    position: relative;
+    height: 100%;
+}
+.playListActive::before{
+  position: absolute;
+  content:"";
+  display: block;
+  top: 0;
+  height: 54px;
+  width: 100vw;
+  margin-left: -10rpx;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  background-color: rgba(0, 255, 0, 0.3);
+  z-index: 9999;
+}

@@ -1,0 +1,31 @@
+<view class="menu-title-container" wx:if="{{type==='menu' && showSongList.id}}">
+    <view class="image">
+        <view class="mask">
+            
+        </view>
+        <image src="{{showSongList.coverImgUrl}}" mode="scaleToFill"></image>
+        <view class="menu-title">
+            {{showSongList.name}}
+        </view>
+        <view class="more-container">
+            <view class="more-left">
+                <image src="/assets/images/icons/favor_icon.png" mode="widthFix"/>
+                <text>{{fmt.formatHeat(showSongList.playCount)}}</text>
+            </view>
+            <view class="more-right">
+                <image src="/assets/images/icons/share_icon.png" mode="widthFix"/>
+                <text>分享</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="song-title" wx:else>
+    {{showSongList.name}}
+</view>
+<view class="music-menu-detail">
+    <block wx:for="{{showSongList.tracks}}" wx:key="id">
+        
+    </block>
+</view>
+
+<wxs src="/wxs/format.wxs" module="fmt"/>

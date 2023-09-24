@@ -1,0 +1,23 @@
+<view class="ranking" bind:tap="toRankDetail">
+    <view class="rank-left">
+        <view class="left-top">
+            {{itemData.name}}
+        </view>
+        <view class="left-bottom">
+            <block wx:for="{{3}}" wx:key="*this">
+                <view class="song-item">
+                    <text class="bottom-index">{{item+1}}.</text>
+                    <text class="bottom-songname">{{itemData.tracks[item].name}}</text>
+                    <text class="bottom-h">-</text>
+                    <text class="bottom-autor">{{itemData.tracks[item].ar[0].name}}</text>
+                </view>
+            </block>
+        </view>
+    </view>
+    <view class="rank-right">
+        <image src="{{itemData.coverImgUrl}}" mode="widthFix"/>
+        <text class="right-playcount">{{fmt.formatHeat(itemData.playCount)}}</text>
+    </view>
+</view>
+
+<wxs src="/wxs/format.wxs" module="fmt"/>

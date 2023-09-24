@@ -1,0 +1,26 @@
+.music-container{
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 6rpx 0;
+}
+.container-left{
+    text-align: center;
+}
+.container-right{
+    height: 100%;
+    flex: 1;
+    margin-left: 50rpx;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+.bottom{
+    font-size: 26rpx;
+}
+.bottom>image{
+    width: 36rpx;
+}
+.bottom>text{
+    margin: 0 10rpx;
+}

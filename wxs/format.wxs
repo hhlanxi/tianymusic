@@ -1,0 +1,32 @@
+
+function formatTime(time){
+    time=time / 1000
+    var minute=Math.floor(time/60)
+    var second=Math.floor(time) % 60
+
+    return padLeftZero(minute) + ":" + padLeftZero(second)
+}
+
+function padLeftZero(str) {
+    str = str.toString()
+    return ("00" + str).slice(str.length);
+  }
+
+
+function formatHeat(heat){
+    if(heat > 100000000){
+        heat=Math.floor(heat/100000000)
+        return heat + "亿"
+    }else if(heat > 10000){
+        heat=(heat/10000).toFixed(1)
+        return heat + "万"
+    }else{
+        return heat + ""
+    }
+}
+
+module.exports={
+    formatTime:formatTime,
+    formatHeat:formatHeat
+}
+    

@@ -1,0 +1,34 @@
+/* pages/detail-video/detail-video.wxss */
+.detail-video{
+    width: 100%;
+}
+.related{
+    height: calc(100vh - 225px - 20rpx);
+    overflow: scroll;
+}
+
+.info,.recommend{
+    padding: 20rpx  40rpx;
+}
+.mvname>text{
+    font-size: 40rpx;
+    font-weight: bold;
+}
+.mvauthor > text , .mvcontent>text{
+    font-size: 24rpx;
+    color: rgb(150, 150, 150);
+}
+
+.recommend .recommend-text::after{
+    content: '';
+    display: block;
+    padding: 6rpx 0;
+    border-bottom:2rpx  solid black;
+}
+.norecommend{
+    display: block;
+    margin-top: 20rpx;
+    text-align: center;
+    font-weight: bold;
+    font-size: 42rpx;
+}

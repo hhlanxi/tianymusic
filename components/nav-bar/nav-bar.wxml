@@ -1,0 +1,24 @@
+<view class="nav-bar">
+    <view class="status" style="height:{{statusBarHeight}}px"></view>
+    <view class="nav">
+        <view class="left">
+            <view class="slot">
+                <slot name="left"></slot>     
+            </view>
+            <view class="default">
+                <van-icon name="arrow-left" />
+            </view>
+        </view>
+        <view class="center">
+            <view class="slot">
+                <slot name="center"></slot>     
+            </view>
+            <view class="default">
+                默认内容
+            </view>
+        </view>
+        <view class="right">
+            
+        </view>
+    </view>
+</view>
