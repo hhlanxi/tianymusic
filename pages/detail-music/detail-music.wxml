@@ -24,7 +24,9 @@
 </view>
 <view class="music-menu-detail">
     <block wx:for="{{showSongList.tracks}}" wx:key="id">
-        
+        <music-menu-detail itemData="{{item}}" index="{{index+1}}"
+        bind:tap="ontaptoplay" mark:index="{{index}}" mark:id="{{item.id}}"
+        ></music-menu-detail>
     </block>
 </view>
 

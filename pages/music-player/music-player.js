@@ -48,6 +48,7 @@ Page({
     onLoad(options){
         const eventChannel = this.getOpenerEventChannel()
         const id=options.id
+       
         eventChannel.on('setplaylist',this.setplaylistfn)
         this.setData({
             id,
