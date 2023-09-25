@@ -205,11 +205,9 @@ Page({
         this.setData({
             circulateImg
         })
-        
     },
     //切换歌曲
     onSwitchMusic(e){
-        
         let index=0
         if(e.type==='determine'){
             index=e.index
@@ -244,17 +242,20 @@ Page({
     },
     circulateSwitch(){
         const type = this.data.circulateImg
-        audioContext.loop=false
-        if(type==='play_order'){
+        if(type==='play_order'){ 
             this.audioEndSwitchStatus('circulate')
         }else if(type === 'play_random'){
                 let index;
                 index = Math.floor(Math.random()*(this.data.playList.length - 1))
                 if(index === this.data.playListIndex) index=index+1;
-            this.audioEndSwitchStatus('random',index)
+                this.audioEndSwitchStatus('random',index)
         }
         else if(type === 'play_repeat'){
-            audioContext.loop=true
+            this.setData({
+                currentTime:0,
+                sliderValue:0
+            })
+            audioContext.play()
         }
     },
     audioEndSwitchStatus(type,index){
