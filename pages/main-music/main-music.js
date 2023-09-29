@@ -5,6 +5,7 @@ import {querySelect} from "../../utils/query-select"
 import  throttle from "../../utils/throttle"
 import { createStoreBindings } from "mobx-miniprogram-bindings"
 import {SongStore,RankSongStore} from "../../store/index"
+import {playerStore} from "../../store/player"
 const querySelectThrottle = throttle(querySelect,10)
 Page({
 
@@ -24,6 +25,9 @@ Page({
         })
     },
     onLoad(){
+        // querySelect('.player').then(res=>{
+        //     console.log(res);
+        // })
         this.fetchMusicBanners()
         this.storBindings=createStoreBindings(this,{
             store:SongStore,
@@ -34,6 +38,31 @@ Page({
             store:RankSongStore,
             actions:['fetchRankingList']
         })
+        this.playerStorBinding=createStoreBindings(this,{
+            store:playerStore,
+            fields:["id",
+            "playList",
+            "currentPlayInfo",
+            "currentTime",
+            "durationTime",
+            "sliderValue",
+            "isClickSlider",
+            "popupShow",
+            "isPlaying",
+            "lyricInfos",
+            "currentLyricIndex",
+            "currentLyricText",
+            "lyricScrollTop",
+            "playListIndex"],
+            actions:['playMediaqRequest']
+        }
+        )
+       wx.nextTick(()=>{
+        if(this.data.id!==0){
+            this.playMediaqRequest()
+        }
+       })
+    
         this.fetchRecommendSongs(3778678).then(_=>{
             this.setData({
                 recommendSongList:SongStore.recommendSongList.tracks.slice(0,6)
@@ -76,6 +105,7 @@ Page({
     onUnload(){
         this.storeBindings.destroyStoreBindings();
         this.storBindings1.destroyStoreBindings()
+        this.playerStorBinding.destroyStoreBindings()
     },
     onClickMenuTag(){
         wx.navigateTo({

@@ -24,3 +24,52 @@ page{
    width: 30%;
     margin-right: 20rpx;
 }
+.main-container{
+    padding-bottom: 70px;
+}
+
+.player{
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 60px;
+    margin-left: -20rpx;
+    box-sizing: border-box;
+    border-radius:0 60rpx 60rpx 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20rpx;
+    padding: 0 10rpx;
+}
+
+
+.player-image{
+    flex: 1;
+    margin-top: 6rpx;
+    border-radius: 10rpx;
+}
+.player-swiper{
+   flex: 3;
+   height: 60px;
+}
+
+.player-operate{
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+.play-item{
+    width: 50%;
+}
+.play_music_list{
+    margin-left: 10rpx;
+    width: 90rpx;
+}
+.player-lyric{
+    display: block;
+    text-align: center;
+    line-height: 60px;
+    color: white;
+}

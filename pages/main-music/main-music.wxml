@@ -16,8 +16,8 @@
     </swiper>
 </view>
 
-
-<view class="recommend" wx:if="{{recommendSongList.length}}">
+<view class="main-container">
+    <view class="recommend" wx:if="{{recommendSongList.length}}">
     <area-header title="推荐歌曲" bind:moreClick="onClickMore">
         <block wx:for="{{recommendSongList}}" wx:key="id"> 
             <music-menu-item itemData="{{item}}" bind:tap="ontaptoplay" data-id="{{item.id}}" mark:index="{{index}}"></music-menu-item>
@@ -55,4 +55,23 @@
             <rank-item itemData="{{item}}" itemKey="{{index}}"></rank-item>
         </block>
     </area-header>
+</view>
+</view>
+
+<view class="player">
+    <image class="player-image" src="http://p1.music.126.net/62xlbNtuhRWuC4h0seLvxA==/109951164524567274.jpg" mode="widthFix"/>
+
+        <swiper class="player-swiper" 	circular>
+            <block wx:for="{{5}}" wx:key="*this">
+                <swiper-item>
+                    <text class="player-lyric">{{item}}</text>
+                </swiper-item>
+            </block>
+        </swiper>
+
+
+    <view class="player-operate">
+        <image class="play-item" src="/assets/images/player/play_pause.png" mode="widthFix"/>
+        <image class="play-item play_music_list" src="/assets/images/player/play_music.png" mode="widthFix"/>
+    </view>
 </view>

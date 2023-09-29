@@ -2,7 +2,7 @@
 import { getPlayDetail,getPlayLyric } from "../../services/Player/player" 
 import { parseLyric } from "../../utils/parse-lyric"
 const App=getApp()
-const audioContext = wx.createInnerAudioContext()
+let audioContext = null
 const circulateEnum=['play_order','play_random','play_repeat']
 Page({
     data:{
@@ -48,7 +48,7 @@ Page({
     onLoad(options){
         const eventChannel = this.getOpenerEventChannel()
         const id=options.id
-       
+        audioContext = wx.createInnerAudioContext()
         eventChannel.on('setplaylist',this.setplaylistfn)
         this.setData({
             id,
@@ -279,8 +279,8 @@ Page({
         audioContext.seek(time / 1000)
     },
     onUnload(){
-        audioContext.pause()
-        // audioContext.destroy()
+        // audioContext.pause()
+        audioContext.destroy()
     }
     
 })
