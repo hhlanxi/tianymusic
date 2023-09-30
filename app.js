@@ -4,7 +4,8 @@ App({
     globalData:{
         statusBarHeight:20,
         scrollHeight:500,
-        windowHeight:600
+        windowHeight:600,
+        isLoginPlayer:false
     },
     onLaunch(){
         wx.getSystemInfo({

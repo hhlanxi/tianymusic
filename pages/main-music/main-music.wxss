@@ -73,3 +73,28 @@ page{
     line-height: 60px;
     color: white;
 }
+
+.popup-container{
+    position: relative;
+    margin-top: 35px;
+    overflow-y: scroll;
+    height: 500rpx;
+    padding: 0 10rpx;
+}
+.playListActive{
+    position: relative;
+    height: 100%;
+}
+.playListActive::before{
+  position: absolute;
+  content:"";
+  display: block;
+  top: 0;
+  height: 54px;
+  width: 100vw;
+  margin-left: -10rpx;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  background-color: rgba(0, 255, 0, 0.3);
+  z-index: 9999;
+}

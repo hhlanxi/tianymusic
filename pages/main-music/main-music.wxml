@@ -58,20 +58,43 @@
 </view>
 </view>
 
-<view class="player">
-    <image class="player-image" src="http://p1.music.126.net/62xlbNtuhRWuC4h0seLvxA==/109951164524567274.jpg" mode="widthFix"/>
-
-        <swiper class="player-swiper" 	circular>
-            <block wx:for="{{5}}" wx:key="*this">
-                <swiper-item>
-                    <text class="player-lyric">{{item}}</text>
+<view class="player" wx:if="{{showPlayer}}">
+    <image class="player-image" src="{{currentPlayInfo.al.picUrl}}" mode="widthFix"/>
+        <swiper class="player-swiper" current="{{playListIndex}}" bindchange="determineSwitch">
+            <block wx:for="{{playList}}" wx:key="id">
+                <swiper-item bind:tap="onTapToPlayerDetail" mark:id="{{item.id}}">
+                    <text class="player-lyric" wx:if="{{index === playListIndex}}">{{currentLyricText}}</text>
                 </swiper-item>
             </block>
         </swiper>
 
 
     <view class="player-operate">
-        <image class="play-item" src="/assets/images/player/play_pause.png" mode="widthFix"/>
-        <image class="play-item play_music_list" src="/assets/images/player/play_music.png" mode="widthFix"/>
+        <image class="play-item" bind:tap="onTapMediaControl" src="/assets/images/player/play_{{isPlaying? 'pause':'resume'}}.png" bind:tap="bindPlayBack" mode="widthFix"/>
+        <image class="play-item play_music_list" src="/assets/images/player/play_music.png" mode="widthFix" bind:tap="onTapPlayList"/>
     </view>
 </view>
+
+<van-popup
+  show="{{popupShow}}"
+  position="bottom"
+  closeable
+  safe-area-inset-bottom
+  custom-style="max-height:50%;background-color:rgba(255,255,255,0.8);margin-bottom:calc(60px + 20rpx)"
+  bind:close="onClosePopup"
+  overlay-style="background-color:rgba(0,0,0,0.6)"
+  close-icon="close"
+  duration="100"
+>
+<view class="popup-container">
+    <block wx:for="{{playList}}" wx:key="id">
+        <music-menu-detail 
+        itemData="{{item}}" 
+        index="{{index+1}}"
+        bind:tap="onSwitchMusic"
+        mark:index="{{index}}"
+        class="{{index === playListIndex ? 'playListActive':''}};"
+        ></music-menu-detail>
+    </block>
+</view>
+</van-popup>

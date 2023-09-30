@@ -4,7 +4,9 @@
         "van-icon": "@vant/weapp/icon/index",
         "area-header":"/components/area-header/area-header","song-sheet-item":"/components/song-sheet-item/song-sheet-item",
         "music-menu-item":"/components/music-menu-item/music-menu-item",
-        "rank-item":"/components/rank-item/rank-item"
+        "rank-item":"/components/rank-item/rank-item",
+        "music-menu-detail":"/components/music-menu-detail/music-menu-detail",
+        "van-popup": "@vant/weapp/popup/index"
     },
     "navigationBarBackgroundColor": "#fafafa"
 }

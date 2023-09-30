@@ -17,7 +17,9 @@ Page({
      swiperitemImage:150,
      recommendSongList:[],
      rankInfo:{},
-     focus:false
+     focus:false,
+     showPlayer:false,
+     popupShow:false
     },
     onClickSearch(){
         wx.navigateTo({
@@ -40,29 +42,16 @@ Page({
         })
         this.playerStorBinding=createStoreBindings(this,{
             store:playerStore,
-            fields:["id",
+            fields:[
+            "id",
             "playList",
             "currentPlayInfo",
-            "currentTime",
-            "durationTime",
-            "sliderValue",
-            "isClickSlider",
-            "popupShow",
             "isPlaying",
-            "lyricInfos",
-            "currentLyricIndex",
             "currentLyricText",
-            "lyricScrollTop",
             "playListIndex"],
-            actions:['playMediaqRequest']
+            actions:['setbindPlayBack','destroyAudio','switchMusic']
         }
         )
-       wx.nextTick(()=>{
-        if(this.data.id!==0){
-            this.playMediaqRequest()
-        }
-       })
-    
         this.fetchRecommendSongs(3778678).then(_=>{
             this.setData({
                 recommendSongList:SongStore.recommendSongList.tracks.slice(0,6)
@@ -88,7 +77,15 @@ Page({
             banners:res.banners
         })
     },
-    
+    onShow(){
+        wx.nextTick(()=>{
+            if(this.data.id!==0){
+                this.setData({
+                    showPlayer:true
+                })
+            }
+           })
+    },
     onImageLoad(event){
         querySelectThrottle(".swiperimage").then(res=>{
             this.setData({
@@ -106,6 +103,8 @@ Page({
         this.storeBindings.destroyStoreBindings();
         this.storBindings1.destroyStoreBindings()
         this.playerStorBinding.destroyStoreBindings()
+        this.destroyAudio()
+
     },
     onClickMenuTag(){
         wx.navigateTo({
@@ -121,5 +120,35 @@ Page({
               res.eventChannel.emit('setplaylist',this.data.recommendSongList,index)
           }
         })
+    },
+    onTapMediaControl(){
+       
+    },
+    determineSwitch(e){
+        const index = e.detail.current
+        this.switchMusic(index)
+    },
+    bindPlayBack(){
+        this.setbindPlayBack()
+    },
+    onTapToPlayerDetail(e){
+        const id = e.mark.id
+        wx.navigateTo({
+          url: `/pages/music-player/music-player?id=${id}&current=1`,
+        })
+    },
+    //歌单列表
+    onTapPlayList(){
+        
+        this.setData({
+            popupShow:true
+        })
+    },
+    //弹出层
+    onClosePopup(){this.setData({popupShow:false
+    })},
+    onSwitchMusic(e){
+        const index = e.mark.index
+        this.switchMusic(index)
     }
 })

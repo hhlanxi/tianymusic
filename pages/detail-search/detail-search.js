@@ -62,10 +62,22 @@ Page({
     },
     ontaptoplay(e){
         const id = e.mark.id
+        const index=e.mark.index
+        const newsearchMusicList=[]
+        this.data.searchMusicList.forEach(item=>{
+            const obj={
+                id:item.id,
+                name:item.name,
+                duration:item.duration
+            }
+            obj.ar=[...item.artists]
+            obj.al=item.album
+            newsearchMusicList.push(obj)
+        })
         wx.navigateTo({
           url: `/pages/music-player/music-player?id=${id}`,
           success:(res)=>{
-              res.eventChannel.emit('setplaylist',this.data.searchMusicList)
+              res.eventChannel.emit('setplaylist',newsearchMusicList,index)
           }
         })
     },
